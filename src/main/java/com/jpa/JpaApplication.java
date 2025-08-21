@@ -29,11 +29,11 @@ public class JpaApplication {
 //		user1.setName("uttam");
 //		user1.setCity("pune");
 //		user1.setStatus("java programmer ");
-//		
-		//will save a single entity/user..
+		
+//		will save a single entity/user..
 //		AppUser u1 = userRepository.save(user1);  
 //		System.out.println(u1);
-//	
+	
 //		AppUser user2 = new AppUser();
 //		user2.setName("ankita");
 //		user2.setCity("pune");
@@ -44,13 +44,13 @@ public class JpaApplication {
 //		user3.setName("khushi");
 //		user3.setCity("banglore");
 //		user3.setStatus("python programmer ");
-		
+//		
 		//to create list (from java 1.9 provided List.of to save multiple entities )
-//		List<AppUser> users = List.of(user2, user3);
-		
+//		List<AppUser> users = List.of(user1, user2, user3);
+//		
 		//will save multiple objects/users in one go..
 //		Iterable<AppUser> result = userRepository.saveAll(users);
-		
+//		
 		//to traverse result 
 //		result.forEach(user->{
 //			System.out.println(user);
@@ -80,7 +80,7 @@ public class JpaApplication {
 		//to find single user data : findById(id) => returns Optional containing the data
 		//to find all users data : findAll() => returns Iterable containing all the data
 
-		Iterable<AppUser> allUsers = userRepository.findAll();
+		//Iterable<AppUser> allUsers = userRepository.findAll();
 		
 		//to iterate all users old way
 //		Iterator<AppUser> it = allUsers.iterator();
@@ -91,14 +91,14 @@ public class JpaApplication {
 //		}
 		
 		//new way to iterate all from(1.8) in this we either pass lambda or consumer 
-		allUsers.forEach(new Consumer<AppUser>() {
-
-			//it is a implimentation anonymous class of Consumer
-			@Override
-			public void accept(AppUser t) {
-				System.out.println(t);
-			}
-		});
+//		allUsers.forEach(new Consumer<AppUser>() {
+//
+//			//it is a implimentation anonymous class of Consumer
+//			@Override
+//			public void accept(AppUser t) {
+//				System.out.println(t);
+//			}
+//		});
 		
 		
 		
@@ -114,5 +114,35 @@ public class JpaApplication {
 		
 		
 		
+		
+//calling sustom finder method to find user by name.....
+		List<AppUser> users = userRepository.findByName("ankita");
+		users.forEach(u->
+		System.out.println(u));
+	
+		System.out.println("..............................................................");
+
+		List<AppUser> users1 = userRepository.findByNameAndCity("uttam", "pune");
+		users1.forEach(u1->
+		System.out.println(u1));
+		
+		System.out.println("..............................................................");
+
+		List<AppUser> allUser = userRepository.getAllUser();
+		allUser.forEach(us ->{
+			System.out.println(us);
+		});
+		
+		System.out.println("..............................................................");
+
+		List<AppUser> userByName = userRepository.getUserByName("uttam", "pune");
+		userByName.forEach(ub ->{
+			System.out.println(ub);
+		});
+		
+		System.out.println("..............................................................");
+		userRepository.getUsers().forEach(e ->{
+			System.out.println(e);
+		});
 	}
 }
