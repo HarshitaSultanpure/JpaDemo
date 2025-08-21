@@ -14,6 +14,7 @@ public class JpaApplication {
 		ApplicationContext context = SpringApplication.run(JpaApplication.class, args);
 		UserRepository userRepository = context.getBean(UserRepository.class);
 		AppUser user = new AppUser();
+		//id is autoimplemented....
 		user.setName("harshita");
 		user.setCity("indore");
 		user.setStatus("java programmer");
