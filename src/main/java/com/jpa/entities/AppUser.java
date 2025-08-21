@@ -56,6 +56,4 @@ public class AppUser {
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", city=" + city + ", status=" + status + "]";
 	}
-	
-	
 }

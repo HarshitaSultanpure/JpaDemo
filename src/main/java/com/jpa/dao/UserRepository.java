@@ -25,4 +25,5 @@ public interface UserRepository extends CrudRepository<AppUser, Integer> {
 	//Native queries
 	@Query(value = "select * from AppUser", nativeQuery = true) //it will understand that the query is sql query.
 	public List<AppUser> getUsers();
+	
 }
